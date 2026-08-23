@@ -7,6 +7,7 @@ Todas las cifras en AUD anuales. La base **excluye** superannuation salvo indica
 OTE = base + variable con el objetivo cumplido al 100%.
 
 Versión web (recomendada, con gráficos): https://claude.ai/code/artifact/9c0d9c1d-de8e-4474-a274-c39688bff948
+English version: https://claude.ai/code/artifact/2f4bf8b2-a7b6-4742-93ba-b2c085e5a753
 
 ---
 
