@@ -1,26 +1,31 @@
-# Laura
+# Laura · Your Own Voice
 
-Audio transcription using [openai-whisper](https://github.com/openai/whisper), with
-[static-ffmpeg](https://pypi.org/project/static-ffmpeg/) providing a bundled ffmpeg
-binary so no system-wide ffmpeg install is needed.
+Herramientas para producir el contenido del canal.
 
-## Setup
+## Kit de edición de entrevistas para DaVinci Resolve
+
+Prepara cada entrevista para editarla en DaVinci Resolve (funciona con la versión
+gratuita):
+
+- quita los silencios largos y genera el corte bruto (`.fcpxml`)
+- marca muletillas, repeticiones y candidatos a Short/Reel con marcadores de colores
+- genera subtítulos `.srt` alineados con el corte
+- incluye scripts para Resolve: estructura de proyecto, Shorts verticales automáticos
+  desde marcadores y capítulos de YouTube
 
 ```bash
 pip install -r requirements.txt
+python resolve/preparar_entrevista.py "Entrevista.mp4"
 ```
 
-## Usage
+Guía completa: [`resolve/GUIA_EDICION.md`](resolve/GUIA_EDICION.md)
+
+## Transcripción simple
 
 ```bash
-python transcribe.py path/to/audio.mp3
+python transcribe.py path/to/audio.mp3 --model small --language es
 ```
 
-Options:
-
-```bash
-python transcribe.py path/to/audio.mp3 --model small --language en
-```
-
-`transcribe.py` calls `static_ffmpeg.add_paths()` on import to put the bundled
-ffmpeg/ffprobe binaries on `PATH` before Whisper needs them.
+Usa [openai-whisper](https://github.com/openai/whisper) con
+[static-ffmpeg](https://pypi.org/project/static-ffmpeg/), así que no hace falta
+instalar ffmpeg en el sistema.
