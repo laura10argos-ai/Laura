@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · Laura Díez Argos</title>
+  <meta name="description" content="Laura Díez Argos — My goal is to help you grow. Crecimiento para negocios, empleados y el podcast Your Own Voice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-title-key="nav.contact">
+  <div id="site-header"></div>
+  <main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow" data-i18n="contact.eyebrow"></span>
+      <h1 data-i18n="contact.title"></h1>
+      <p class="lead" data-i18n="contact.lead"></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container grid grid-2" style="gap:56px;align-items:start">
+      <form class="form card" id="contact-form">
+        <div><label for="f-name" data-i18n="contact.name"></label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div><label for="f-email" data-i18n="contact.email"></label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="f-type" data-i18n="contact.type"></label>
+          <select id="f-type" name="type">
+            <option value="business" data-i18n="contact.type.business"></option>
+            <option value="employee" data-i18n="contact.type.employee"></option>
+            <option value="podcast" data-i18n="contact.type.podcast"></option>
+            <option value="other" data-i18n="contact.type.other"></option>
+          </select>
+        </div>
+        <div><label for="f-msg" data-i18n="contact.message"></label><textarea id="f-msg" name="message" required></textarea></div>
+        <button class="btn btn-primary" type="submit" data-i18n="contact.send"></button>
+        <p class="form-note" data-i18n="contact.note"></p>
+        <p id="form-status" role="status" style="font-weight:600;color:var(--accent)"></p>
+      </form>
+      <div>
+        <h3 data-i18n="contact.side.title"></h3>
+        <p style="color:var(--ink-soft)" data-i18n="contact.side.text"></p>
+        <div class="grid" style="gap:12px;margin-top:20px">
+          <a class="card platform" data-link="youtube" style="flex-direction:row;align-items:center;padding:18px"><div class="icon yt" data-icon="youtube" style="margin:0"></div><strong>YouTube · Your Own Voice</strong></a>
+          <a class="card platform" data-link="instagram" style="flex-direction:row;align-items:center;padding:18px"><div class="icon ig" data-icon="instagram" style="margin:0"></div><strong>Instagram</strong></a>
+          <a class="card platform" data-link="spotify" style="flex-direction:row;align-items:center;padding:18px"><div class="icon sp" data-icon="spotify" style="margin:0"></div><strong>Spotify</strong></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+  <script>
+    // Preselecciona el tipo de contacto si viene de otra página (?type=business)
+    const t = new URLSearchParams(location.search).get("type");
+    if (t) document.getElementById("f-type").value = t;
+  </script>
+  <div id="site-footer"></div>
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
