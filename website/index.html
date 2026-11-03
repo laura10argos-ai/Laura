@@ -7,12 +7,13 @@
   <meta name="description" content="Laura Díez Argos — My goal is to help you grow. Crecimiento para negocios, empleados y el podcast Your Own Voice.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-title-key="home.title">
   <div id="site-header"></div>
   <main>
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
@@ -20,46 +21,96 @@
         <h1 data-i18n="home.title"></h1>
         <p class="lead" data-i18n="home.lead"></p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="contacto.html" data-i18n="home.cta1"></a>
+          <a class="btn btn-primary" href="contacto.html"><span data-i18n="home.cta1"></span> →</a>
           <a class="btn btn-ghost" href="your-own-voice.html" data-i18n="home.cta2"></a>
         </div>
+        <div class="listen" data-socials><span data-i18n="home.listen"></span></div>
       </div>
-      <!-- Sustituye por: <img src="img/laura.jpg" alt="Laura Díez Argos"> -->
-      <div class="hero-photo"><span data-i18n="home.photo"></span></div>
+      <div style="position:relative">
+        <!-- Sustituye el contenido por: <img src="img/laura.jpg" alt="Laura Díez Argos"> -->
+        <div class="hero-photo"><span class="monogram">L</span><span class="ph-note" data-i18n="home.photo"></span></div>
+        <div class="hero-badge"><span class="dot"></span><span data-i18n="home.badge"></span></div>
+      </div>
     </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
-  <section class="section-alt">
+  <!-- CINTA DE TEMAS -->
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">
+    <span data-i18n="yov.t1"></span><span data-i18n="yov.t2"></span><span data-i18n="yov.t4"></span>
+    <span data-i18n="yov.t5"></span><span data-i18n="yov.t3"></span><span data-i18n="yov.t6"></span>
+    <span data-i18n="yov.t7"></span><span data-i18n="yov.t8"></span>
+  </div></div>
+
+  <!-- CAMINOS -->
+  <section>
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow" data-i18n="home.paths.eyebrow"></span>
         <h2 data-i18n="home.paths.title"></h2>
       </div>
-      <div class="grid grid-3">
-        <a class="card" href="negocios.html"><span class="num">01</span><h3 data-i18n="home.paths.b.title"></h3><p data-i18n="home.paths.b.text"></p><span class="more" data-i18n="home.more"></span></a>
-        <a class="card" href="empleados.html"><span class="num">02</span><h3 data-i18n="home.paths.e.title"></h3><p data-i18n="home.paths.e.text"></p><span class="more" data-i18n="home.more"></span></a>
-        <a class="card" href="your-own-voice.html"><span class="num">03</span><h3 data-i18n="home.paths.y.title"></h3><p data-i18n="home.paths.y.text"></p><span class="more" data-i18n="home.more"></span></a>
+      <div class="tiles">
+        <a class="tile reveal" href="negocios.html"><div class="bg bg-1"></div><span class="num">01</span><h3 data-i18n="home.paths.b.title"></h3><p data-i18n="home.paths.b.text"></p><span class="arrow">→</span></a>
+        <a class="tile reveal" href="empleados.html"><div class="bg bg-2"></div><span class="num">02</span><h3 data-i18n="home.paths.e.title"></h3><p data-i18n="home.paths.e.text"></p><span class="arrow">→</span></a>
+        <a class="tile reveal" href="your-own-voice.html"><div class="bg bg-3"></div><span class="num">03</span><h3 data-i18n="home.paths.y.title"></h3><p data-i18n="home.paths.y.text"></p><span class="arrow">→</span></a>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container grid grid-2" style="align-items:center;gap:56px">
-      <div>
+  <!-- SOBRE MÍ -->
+  <section class="section-alt">
+    <div class="container about-grid">
+      <!-- Sustituye por: <img src="img/laura-2.jpg" alt="Laura Díez Argos"> -->
+      <div class="about-photo reveal"><span class="monogram">L</span></div>
+      <div class="reveal">
         <span class="eyebrow" data-i18n="home.about.eyebrow"></span>
         <h2 data-i18n="home.about.title"></h2>
-        <p data-i18n="home.about.p1"></p>
+        <p class="lead" data-i18n="home.about.p1"></p>
         <p data-i18n="home.about.p2"></p>
+        <div class="about-sign">Laura</div>
+        <div class="btn-row"><a class="btn btn-dark" href="contacto.html"><span data-i18n="cta.button"></span> →</a></div>
       </div>
-      <p class="quote" data-i18n="home.quote"></p>
     </div>
   </section>
 
-  <section class="section-dark cta-band">
+  <!-- PODCAST -->
+  <section class="section-dark">
     <div class="container">
-      <h2 data-i18n="cta.title"></h2>
-      <p class="lead center" data-i18n="cta.text"></p>
-      <div class="btn-row"><a class="btn btn-primary" href="contacto.html" data-i18n="cta.button"></a></div>
+      <div class="section-head row reveal">
+        <div>
+          <span class="eyebrow" data-i18n="home.pod.eyebrow"></span>
+          <h2 data-i18n="home.pod.title"></h2>
+          <p class="lead" data-i18n="home.pod.text"></p>
+        </div>
+        <a class="btn btn-ghost" href="your-own-voice.html"><span data-i18n="home.pod.cta"></span> →</a>
+      </div>
+      <div class="episodes" data-episodes></div>
+    </div>
+  </section>
+
+  <!-- CITA -->
+  <section>
+    <div class="container reveal">
+      <p class="big-quote" data-i18n="home.quote"></p>
+      <p class="quote-by" data-i18n="home.quote.by"></p>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section-accent" style="padding:90px 0">
+    <div class="container newsletter reveal">
+      <div>
+        <span class="eyebrow" data-i18n="nl.eyebrow"></span>
+        <h2 data-i18n="nl.title"></h2>
+      </div>
+      <div>
+        <p data-i18n="nl.text"></p>
+        <form class="nl-form" id="nl-form">
+          <input type="email" name="email" required data-i18n-placeholder="nl.placeholder" aria-label="Email">
+          <button class="btn btn-dark" type="submit" data-i18n="nl.button"></button>
+        </form>
+        <p class="nl-note" id="nl-status" data-i18n="nl.note"></p>
+      </div>
     </div>
   </section>
   </main>

@@ -83,6 +83,7 @@
     document.getElementById("site-footer").outerHTML = `
       <footer class="site-footer">
         <div class="container">
+          <div class="footer-big" data-i18n="footer.big"></div>
           <div class="footer-grid">
             <div style="max-width:320px">
               <a class="brand" href="index.html">Laura <span>Díez Argos</span></a>
@@ -103,6 +104,9 @@
       if (a.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
     });
     document.querySelectorAll("[data-icon]").forEach(el => { el.innerHTML = ICONS[el.dataset.icon]; });
+
+    document.querySelectorAll("[data-socials]").forEach(el => { el.innerHTML += socialLinks(); });
+    document.querySelectorAll(".marquee-track").forEach(t => { t.innerHTML += t.innerHTML; });
 
     const yt = document.getElementById("yt-embed");
     if (yt && C.youtubeFeaturedId) {
@@ -139,15 +143,58 @@
     });
   }
 
+  function renderEpisodes(lang) {
+    document.querySelectorAll("[data-episodes]").forEach(box => {
+      box.innerHTML = (C.episodes || []).map(ep => {
+        const href = ep.youtubeId ? `https://www.youtube.com/watch?v=${ep.youtubeId}` : (C.youtube || "#");
+        const img = ep.youtubeId ? `<img src="https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg" alt="" loading="lazy">` : "";
+        return `<a class="episode reveal" href="${href}" target="_blank" rel="noopener">
+          <div class="thumb">${img}<span class="play"></span></div>
+          <span class="tag">${ep.tag[lang]}</span><h3>${ep.title[lang]}</h3><p>${ep.guest[lang]}</p></a>`;
+      }).join("");
+    });
+  }
+
+  function setupNewsletter() {
+    const f = document.getElementById("nl-form");
+    if (!f) return;
+    f.addEventListener("submit", async e => {
+      e.preventDefault();
+      const d = T[window.CURRENT_LANG], st = document.getElementById("nl-status");
+      if (!C.newsletterEndpoint) { st.textContent = d["nl.soon"]; return; }
+      try {
+        const r = await fetch(C.newsletterEndpoint, { method: "POST", body: new FormData(f), headers: { Accept: "application/json" } });
+        if (!r.ok) throw new Error();
+        f.reset(); st.textContent = d["nl.ok"];
+      } catch (err) { st.textContent = d["contact.error"]; }
+    });
+  }
+
+  function setupReveal() {
+    const els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("in")); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    }), { threshold: 0.12 });
+    els.forEach(e => io.observe(e));
+  }
+
   /* ---------- Inicio ---------- */
   renderHeader();
   renderFooter();
   fillDynamic();
-  applyLang(getLang());
+  const lang0 = getLang();
+  renderEpisodes(lang0);
+  applyLang(lang0);
   setupForm();
+  setupNewsletter();
+  setupReveal();
 
   document.querySelectorAll(".lang-switch button").forEach(b =>
-    b.addEventListener("click", () => applyLang(b.dataset.lang)));
+    b.addEventListener("click", () => { renderEpisodes(b.dataset.lang); applyLang(b.dataset.lang); setupReveal(); }));
+  const header = document.querySelector(".site-header");
+  const onScroll = () => header.classList.toggle("scrolled", scrollY > 40);
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
   const toggle = document.getElementById("menu-toggle");
   toggle.addEventListener("click", () => document.getElementById("nav-links").classList.toggle("open"));
 })();
